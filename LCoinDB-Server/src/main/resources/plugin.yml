@@ -1,0 +1,9 @@
+name: LCoinDB-Server
+version: '1.0-SNAPSHOT'
+main: me.pilkeysek.lCoinDBServer.LCoinDBServer
+api-version: '1.21'
+authors: [ PilkeySEK ]
+description: Plugin for authenticating players with LegitiCoinDB running on the same machine
+commands:
+  authme:
+    description: Authenticated with the database.

@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "id": "lcoindb",
+  "version": "${version}",
+
+  "name": "LCoinDB",
+  "description": "LegitiCoin Client",
+  "authors": [],
+  "contact": {},
+
+  "license": "MIT",
+  "icon": "assets/lcoindb/icon.png",
+
+  "environment": "client",
+  "entrypoints": {
+    "client": ["me.pilkeysek.lcoindb.client.LcoindbClient"],
+    "main": ["me.pilkeysek.lcoindb.Lcoindb"]
+  },
+
+  "mixins": [
+    "lcoindb.mixins.json"
+    ,{
+      "config": "lcoindb.client.mixins.json",
+      "environment": "client"
+    }
+  ],
+
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
