@@ -21,3 +21,4 @@ Go to the releases and select the latest release, download the `LCoinDB.jar` fro
 - Make error messages on the client better (not just sending the raw json response into the chat if somehthing goes wrong)
 - Rate limit the API
 - Make translations for the Mod instead of hardcoding the texts
+- Add information on how to build and run the project yourself
