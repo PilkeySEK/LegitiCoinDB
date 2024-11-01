@@ -36,6 +36,7 @@ public class AuthMeCommand implements CommandExecutor {
             return false;
         }
         MongoCollection<Document> authplayers = client.getDatabase("lcoindb").getCollection("authplayers");
+        MongoCollection<Document> players = client.getDatabase("lcoindb").getCollection("players");
         String playerUUID = ((Player) commandSender).getUniqueId().toString().replace("-","");
         Document doc = authplayers.find(eq("uuid", playerUUID)).first();
         if(doc != null) {
@@ -47,6 +48,11 @@ public class AuthMeCommand implements CommandExecutor {
                     .append("_id", new ObjectId())
                     .append("uuid", playerUUID)
                     .append("secret", strings[0])
+            );
+            InsertOneResult result2 = players.insertOne(new Document()
+                    .append("_id", new ObjectId())
+                    .append("uuid", playerUUID)
+                    .append("lcoins", 100)
             );
             commandSender.sendMessage(MiniMessage.miniMessage().deserialize("<green>You have been authenticated! You can now leave this server.</green>"));
         }
