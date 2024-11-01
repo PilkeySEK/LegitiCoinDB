@@ -10,6 +10,7 @@ This is the source code for the LegitiCoinDB (Minecraft Client Mod, API, Minecra
 (I know the directories are badly named)
 
 ## TODO List
+- Rename directories/projects to be more descriptive
 - Make some way to get the "top 10" players
 - Clean up code for the `/lcoin` command (split into multiple files maybe?)
 - Make error messages on the client better (not just sending the raw json response into the chat if somehthing goes wrong)
