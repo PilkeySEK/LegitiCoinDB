@@ -1,6 +1,11 @@
 # LegitiCoinDB
 This is the source code for the LegitiCoinDB (Minecraft Client Mod, API, Minecraft Paper Server Plugin)
 
+## Where can I get the mod?
+Go to the releases and select the latest release, download the `LCoinDB.jar` from there
+(Get the latest release here)(https://github.com/PilkeySEK/LegitiCoinDB/releases/latest)
+
+## Directories
 `LCoinDB` -> Minecraft Client Mod for Fabric
 
 `LcoinDB-Server` -> Minecraft Paper Server Plugin for Authenticating
