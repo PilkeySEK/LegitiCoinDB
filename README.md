@@ -3,7 +3,7 @@ This is the source code for the LegitiCoinDB (Minecraft Client Mod, API, Minecra
 
 ## Where can I get the mod?
 Go to the releases and select the latest release, download the `LCoinDB.jar` from there
-(Get the latest release here)(https://github.com/PilkeySEK/LegitiCoinDB/releases/latest)
+[Get the latest release here](https://github.com/PilkeySEK/LegitiCoinDB/releases/latest)
 
 ### One thing to do before you can use it
 You should join the server `lcauth.skye.host` to authenticate (else you won't be able to use the mod). You might need to rejoin one time if it gives an error on the first join.
