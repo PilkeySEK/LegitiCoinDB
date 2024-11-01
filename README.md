@@ -5,6 +5,9 @@ This is the source code for the LegitiCoinDB (Minecraft Client Mod, API, Minecra
 Go to the releases and select the latest release, download the `LCoinDB.jar` from there
 (Get the latest release here)(https://github.com/PilkeySEK/LegitiCoinDB/releases/latest)
 
+### One thing to do before you can use it
+You should join the server `lcauth.skye.host` to authenticate (else you won't be able to use the mod). You might need to rejoin one time if it gives an error on the first join.
+
 ## Directories
 `LCoinDB` -> Minecraft Client Mod for Fabric
 
@@ -22,3 +25,4 @@ Go to the releases and select the latest release, download the `LCoinDB.jar` fro
 - Rate limit the API
 - Make translations for the Mod instead of hardcoding the texts
 - Add information on how to build and run the project yourself
+- Fix the bug where you need to rejoin one time to actually authenticate
