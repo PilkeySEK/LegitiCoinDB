@@ -38,40 +38,42 @@ app.get("/player/:uuid", async (req, res) => {
 app.use((req, res, next) => {
   console.log(req.rawHeaders);
   console.log(req.body);
-  if(!req.headers.authorization) {
-    return res.status(403).json({"message":"No authorization sent"});
+  if (!req.headers.authorization) {
+    return res.status(403).json({ message: "No authorization sent" });
   }
   next();
 });
 
 app.post("/transaction", async (req, res) => {
   const body = req.body;
-  if(!(body.sender && body.receiver && body.amount)) {
-    res.status(400).json({"message":"No sender, reciever or amount was provided"});
+  if (!(body.sender && body.receiver && body.amount)) {
+    res
+      .status(400)
+      .json({ message: "No sender, reciever or amount was provided" });
     return;
   }
-  const sender = await players.findOne({uuid: body.sender});
-  if(!sender) {
-    res.status(400).json({"message":"Sender is not registered in database"});
+  const sender = await players.findOne({ uuid: body.sender });
+  if (!sender) {
+    res.status(400).json({ message: "Sender is not registered in database" });
     return;
   }
-  const receiver = await players.findOne({uuid: body.receiver});
-  if(!receiver) {
-    res.status(400).json({"message":"Receiver is not registered in database"});
+  const receiver = await players.findOne({ uuid: body.receiver });
+  if (!receiver) {
+    res.status(400).json({ message: "Receiver is not registered in database" });
     return;
   }
   const authorization = req.headers.authorization;
-  const dbAuthorization = await authplayers.findOne({uuid: body.sender});
-  if(!dbAuthorization) {
-    res.status(400).json({"message":"No authorized player with that uuid"});
+  const dbAuthorization = await authplayers.findOne({ uuid: body.sender });
+  if (!dbAuthorization) {
+    res.status(400).json({ message: "No authorized player with that uuid" });
     return;
   }
-  if(authorization !== dbAuthorization.secret) {
-    res.status(403).json({"message":"The autorization failed"});
+  if (authorization !== dbAuthorization.secret) {
+    res.status(403).json({ message: "The autorization failed" });
     return;
   }
-  if(body.amount <= 0) {
-    res.status(400).json({"message":"Amount must be 1 or higher"});
+  if (body.amount <= 0) {
+    res.status(400).json({ message: "Amount must be 1 or higher" });
     return;
   }
 
@@ -80,20 +82,32 @@ app.post("/transaction", async (req, res) => {
   senderlcoins -= amount;
   let receiverlcoins = receiver.lcoins;
   receiverlcoins += amount;
-  if(senderlcoins < 0) {
-    res.status(400).json({"message":"Bad Transaction: The sender does not have enough lcoins"});
+  if (senderlcoins < 0) {
+    res
+      .status(400)
+      .json({
+        message: "Bad Transaction: The sender does not have enough lcoins",
+      });
     return;
   }
-  if(isNaN(senderlcoins) || isNaN(receiverlcoins)) {
-    res.status(400).json({"message":"Bad Transaction: Resulting amounts are NaN"});
+  if (isNaN(senderlcoins) || isNaN(receiverlcoins)) {
+    res
+      .status(400)
+      .json({ message: "Bad Transaction: Resulting amounts are NaN" });
     return;
   }
-  await players.updateOne({uuid: body.sender}, {$set: {lcoins: senderlcoins}})
-  await players.updateOne({uuid: body.receiver}, {$set: {lcoins: receiverlcoins}});
-  res.json({"message":"Transaction Success"});
+  await players.updateOne(
+    { uuid: body.sender },
+    { $set: { lcoins: senderlcoins } }
+  );
+  await players.updateOne(
+    { uuid: body.receiver },
+    { $set: { lcoins: receiverlcoins } }
+  );
+  res.json({ message: "Transaction Success" });
 });
 
 // TODO: HTTPS instead of HTTP
-app.listen(PORT, '0.0.0.0', () => {
+app.listen(PORT, "0.0.0.0", () => {
   console.log("Port ", PORT);
 });
