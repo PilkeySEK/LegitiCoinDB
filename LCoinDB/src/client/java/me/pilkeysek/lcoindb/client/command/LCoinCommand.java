@@ -45,6 +45,7 @@ public class LCoinCommand {
                             builder.suggest("ping");
                             builder.suggest("transaction");
                             builder.suggest("balance");
+                            if(LcoindbClient.config.authenticationEnabled()) builder.suggest("disableauth");
                             return builder.buildFuture();
                         })
                         .executes(context -> {
@@ -58,6 +59,10 @@ public class LCoinCommand {
                                     return 0;
                                 case "balance":
                                     getCoins(context.getSource().getPlayer().getNameForScoreboard(), context);
+                                    return 1;
+                                case "disableauth":
+                                    LcoindbClient.config.authenticationEnabled(false);
+                                    context.getSource().sendFeedback(Text.literal("Disabled automatic authentication").formatted(Formatting.GREEN));
                                     return 1;
                                 default:
                                     context.getSource().sendFeedback(Text.literal("Unknown argument").formatted(Formatting.RED));
