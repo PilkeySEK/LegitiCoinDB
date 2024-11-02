@@ -6,4 +6,4 @@ authors: [ PilkeySEK ]
 description: Plugin for authenticating players with LegitiCoinDB running on the same machine
 commands:
   authme:
-    description: Authenticated with the database.
+    description: Authenticates with the database.
