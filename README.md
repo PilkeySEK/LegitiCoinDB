@@ -17,6 +17,29 @@ The first thing you will need to do after installing the mod and starting minecr
 
 (I know the directories are badly named)
 
+## Setting it up on your local machine
+To set this up on your local machine (likely for development purposes), follow this step-by-step guide:
+1. Clone the repository in a directory of your choosing
+2. Install mongodb for your OS
+3. Set up a paper server in a directory of your choosing
+4. Download the Paper server .jar from the releases or compile it yourself, then put the .jar into the `plugins` folder of the paper server, then restart the server
+5. Go into `plugins/LcoinDB-Server/` and open the `config.yml` file with a text editor. Change the `mongoUri` to the connection string of the mongodb that was installed in step 2
+6. Restart the server once again (ikr)
+7. Go to `\<cloned repo>/LegitiCoinDB-server` and create a new file `.env` with the following contents. Replace `\<mongodb connection string>` with your mongodb connection string:
+```
+PORT=3000
+MONGO_URI=\<mongodb connection string>
+DB=lcoindb
+```
+8. Install node.js and npm
+9. Run `npm i` in the `LegitiCoinDB-server` directory, this will download all the required node modules
+10. Run the node.js app with `node .`
+11. Download the fabric mod and put it in the mod folder of your fabric 1.21.1 instance, then start it
+12. Adjust the config values of the mod in the `\<instance>/config/lcoindb-config.json5` file (change the api url to localhost:3000 (or whatever port you configured the node.js app))
+13. Relaunch minecraft and join your local Paper server (you can also put the Paper server behind a proxy like Velocity, make sure to enable online mode on your proxy though). It should be running on `localhost`.
+14. If everything went well the Paper plugin should now authenticate you! (This might require a rejoin for some reason)
+15. You can now use the mod like normal, except it will now make the api calls to your local node.js app, so meaning it will also write the changes to your local mongodb database. You can now start developing things for the mod, the Paper plugin or the node.js app :)
+
 ## TODO List
 - Rename directories/projects to be more descriptive
 - Make some way to get the "top 10" players
