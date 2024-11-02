@@ -2,11 +2,11 @@
 This is the source code for the LegitiCoinDB (Minecraft Client Mod, API, Minecraft Paper Server Plugin)
 
 ## Where can I get the mod?
+**Make sure to read all of this section, else you might run into problems**
+
 Go to the releases and select the latest release, download the `LCoinDB.jar` from there
 [Get the latest release here](https://github.com/PilkeySEK/LegitiCoinDB/releases/latest)
-
-### One thing to do before you can use it
-You should join the server `lcauth.skye.host` to authenticate (else you won't be able to use the mod). You might need to rejoin one time if it gives an error on the first join.
+The first thing you will need to do after installing the mod and starting minecraft is to join `lcauth.skye.host`, the mod will automatically authenticate you with a randomly generated key. If it doesnt work for some reason on the first join (It should tell you that it successfully authenticated you in the chat), rejoin, then it should work. After you're authenticated, you can turn automatic authentication off with the command `/lcoin disableauth` (you can also do this via the config).
 
 ## Directories
 `LCoinDB` -> Minecraft Client Mod for Fabric
