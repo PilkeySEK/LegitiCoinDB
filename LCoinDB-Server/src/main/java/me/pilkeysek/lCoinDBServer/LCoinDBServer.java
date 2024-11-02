@@ -16,7 +16,7 @@ public final class LCoinDBServer extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        config.addDefault("mongoUri", "mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000");
+        config.addDefault("mongoUri", "mongodb://skye.host:27017/?directConnection=true&serverSelectionTimeoutMS=2000");
         config.options().copyDefaults(true);
         saveConfig();
         mongoClient = MongoClients.create(Objects.requireNonNull(config.getString("mongoUri")));
