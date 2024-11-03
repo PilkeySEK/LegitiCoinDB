@@ -107,6 +107,16 @@ app.post("/transaction", async (req, res) => {
   res.json({ message: "Transaction Success" });
 });
 
+async function dropRandomLCoins() {
+  const randomDocument = await players.aggregate([{ $sample: { size: 1 } }]);
+  await players.updateOne(
+    {uuid: randomDocument.uuid},
+    { $set: { lcoins: randomDocument.lcoins + 1}}
+  );
+}
+
+setInterval(dropRandomLCoins, 1000*60*3); // Every 3 minutes
+
 // TODO: HTTPS instead of HTTP
 app.listen(PORT, "0.0.0.0", () => {
   console.log("Port ", PORT);
