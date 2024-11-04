@@ -1,0 +1,20 @@
+{
+  "name": "lcoindb-bot",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "discord.js": "^14.16.3",
+    "dotenv": "^16.4.5",
+    "minecraft-player": "^1.0.1",
+    "mongodb": "^6.10.0"
+  },
+  "devDependencies": {
+    "eslint": "^9.14.0"
+  }
+}
