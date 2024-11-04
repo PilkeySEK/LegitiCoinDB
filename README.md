@@ -25,10 +25,11 @@ To set this up on your local machine (likely for development purposes), follow t
 4. Download the Paper server .jar from the releases or compile it yourself, then put the .jar into the `plugins` folder of the paper server, then restart the server
 5. Go into `plugins/LcoinDB-Server/` and open the `config.yml` file with a text editor. Change the `mongoUri` to the connection string of the mongodb that was installed in step 2
 6. Restart the server once again (ikr)
-7. Go to `<cloned repo>/LegitiCoinDB-server` and create a new file `.env` with the following contents. Replace `\<mongodb connection string>` with your mongodb connection string:
+7. Go to `<cloned repo>/LegitiCoinDB-server` and create a new file `.env` with the following contents. Replace `<mongodb connection string>` with your mongodb connection string:
+master
 ```
 PORT=3000
-MONGO_URI=\<mongodb connection string>
+MONGO_URI=<mongodb connection string>
 DB=lcoindb
 ```
 8. Install node.js and npm
