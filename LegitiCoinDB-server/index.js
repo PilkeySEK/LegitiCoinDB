@@ -76,6 +76,10 @@ app.post("/transaction", async (req, res) => {
     res.status(400).json({ message: "Amount must be 1 or higher" });
     return;
   }
+  if(body.sender === body.receiver) {
+    res.status(400).json({message: "Cannot send money to yourself"});
+    return;
+  }
 
   const amount = body.amount;
   let senderlcoins = sender.lcoins;
