@@ -28,7 +28,7 @@ To set this up on your local machine (likely for development purposes), follow t
 7. Go to `\<cloned repo>/LegitiCoinDB-server` and create a new file `.env` with the following contents. Replace `\<mongodb connection string>` with your mongodb connection string:
 ```
 PORT=3000
-MONGO_URI=\<mongodb connection string>
+MONGO_URI=<mongodb connection string>
 DB=lcoindb
 ```
 8. Install node.js and npm
