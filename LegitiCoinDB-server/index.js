@@ -76,8 +76,8 @@ app.post("/transaction", async (req, res) => {
     res.status(400).json({ message: "Amount must be 1 or higher" });
     return;
   }
-  if(body.sender === body.receiver) {
-    res.status(400).json({message: "Cannot send money to yourself"});
+  if (body.sender === body.receiver) {
+    res.status(400).json({ message: "Cannot send money to yourself" });
     return;
   }
 
@@ -87,11 +87,9 @@ app.post("/transaction", async (req, res) => {
   let receiverlcoins = receiver.lcoins;
   receiverlcoins += amount;
   if (senderlcoins < 0) {
-    res
-      .status(400)
-      .json({
-        message: "Bad Transaction: The sender does not have enough lcoins",
-      });
+    res.status(400).json({
+      message: "Bad Transaction: The sender does not have enough lcoins",
+    });
     return;
   }
   if (isNaN(senderlcoins) || isNaN(receiverlcoins)) {
@@ -114,12 +112,12 @@ app.post("/transaction", async (req, res) => {
 async function dropRandomLCoins() {
   const randomDocument = await players.aggregate([{ $sample: { size: 1 } }]);
   await players.updateOne(
-    {uuid: randomDocument.uuid},
-    { $set: { lcoins: randomDocument.lcoins + 1}}
+    { uuid: randomDocument.uuid },
+    { $set: { lcoins: randomDocument.lcoins + 1 } }
   );
 }
 
-setInterval(dropRandomLCoins, 1000*60*3); // Every 3 minutes
+setInterval(dropRandomLCoins, 1000 * 60 * 3); // Every 3 minutes
 
 // TODO: HTTPS instead of HTTP
 app.listen(PORT, "0.0.0.0", () => {
