@@ -112,8 +112,8 @@ app.post("/transaction", async (req, res) => {
 async function dropRandomLCoins() {
   const randomDocument = await players.aggregate([{ $sample: { size: 1 } }]);
   await players.updateOne(
-    { uuid: randomDocument.uuid },
-    { $set: { lcoins: randomDocument.lcoins + 1 } }
+    { uuid: randomDocument[0].uuid },
+    { $set: { lcoins: randomDocument[0].lcoins + 1 } }
   );
 }
 
