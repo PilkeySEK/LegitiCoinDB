@@ -65,6 +65,7 @@ LCoinDB/!gradle-wrapper.jar
 # LegitiCoinDB-server (node.js)
 LegitiCoinDB-server/.env
 LegitiCoinDB-server/node_modules
+LegitiCoinDB-server/certs
 
 # LCoinDB-Server (Paper Plugin)
 LCoinDB-Server/.idea/

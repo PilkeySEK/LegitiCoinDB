@@ -1,6 +1,15 @@
 require("dotenv").config();
 const express = require("express");
+const https = require('https');
+const fs = require('fs');
 const { MongoClient, MongoInvalidArgumentError } = require("mongodb");
+
+const key = fs.readFileSync(__dirname + '/certs/key.key');
+const cert = fs.readFileSync(__dirname + '/certs/cert.crt');
+const options = {
+  key: key,
+  cert: cert
+};
 
 const MONGO_URI = process.env.MONGO_URI;
 const PORT = process.env.PORT;
@@ -119,7 +128,10 @@ async function dropRandomLCoins() {
 
 setInterval(dropRandomLCoins, 1000 * 60 * 3); // Every 3 minutes
 
+const server = https.createServer(options, app);
+
+
 // TODO: HTTPS instead of HTTP
-app.listen(PORT, "0.0.0.0", () => {
+server.listen(PORT, "0.0.0.0", () => {
   console.log("Port ", PORT);
 });
