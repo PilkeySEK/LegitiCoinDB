@@ -15,6 +15,8 @@ The first thing you will need to do after installing the mod and starting minecr
 
 `LegitiCoinDB-server` -> node.js API for the Minecraft Client Mod
 
+`LCoinDB-Bot` -> Discord bot
+
 (I know the directories are badly named)
 
 ## Setting it up on your local machine
@@ -26,6 +28,7 @@ To set this up on your local machine (likely for development purposes), follow t
 5. Go into `plugins/LcoinDB-Server/` and open the `config.yml` file with a text editor. Change the `mongoUri` to the connection string of the mongodb that was installed in step 2
 6. Restart the server once again (ikr)
 7. Go to `<cloned repo>/LegitiCoinDB-server` and create a new file `.env` with the following contents. Replace `<mongodb connection string>` with your mongodb connection string:
+master
 ```
 PORT=3000
 MONGO_URI=<mongodb connection string>
@@ -39,6 +42,18 @@ DB=lcoindb
 13. Relaunch minecraft and join your local Paper server (you can also put the Paper server behind a proxy like Velocity, make sure to enable online mode on your proxy though). It should be running on `localhost`.
 14. If everything went well the Paper plugin should now authenticate you! (This might require a rejoin for some reason)
 15. You can now use the mod like normal, except it will now make the api calls to your local node.js app, so meaning it will also write the changes to your local mongodb database. You can now start developing things for the mod, the Paper plugin or the node.js app :)
+
+### Optional: setup discord bot
+1. Create a [discord bot](https://discord.com/developers/applications)
+2. Go to `<cloned repo>/LCoinDB-Bot and create a new file called .env with your bot token, application client id and mongodb connection string:
+```
+DISCORD_TOKEN=<discord token>
+MONGO_URI=<mongodb connection string>
+CLIENTID=<client id>
+DB=lcoindb
+```
+3. Run node deploy-commands.js to update the bot's slash commands
+4. [add the bot to your server](https://discordjs.guide/preparations/adding-your-bot-to-servers.html) and run node . to run the bot
 
 ## TODO List
 - Rename directories/projects to be more descriptive

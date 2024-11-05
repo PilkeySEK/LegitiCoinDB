@@ -130,3 +130,7 @@ LCoinDB-Server/.mvn/timing.properties
 LCoinDB-Server/.mvn/wrapper/maven-wrapper.jar
 LCoinDB-Server/.flattened-pom.xml
 LCoinDB-Server/run/
+
+#LCoinDB-Bot (node.js)
+LCoinDB-Bot/.env
+LCoinDB-Bot/node_modules
