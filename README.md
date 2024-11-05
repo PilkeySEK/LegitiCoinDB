@@ -15,6 +15,8 @@ The first thing you will need to do after installing the mod and starting minecr
 
 `LegitiCoinDB-server` -> node.js API for the Minecraft Client Mod
 
+`LCoinDB-Bot` -> Discord bot
+
 (I know the directories are badly named)
 
 ## Setting it up on your local machine
