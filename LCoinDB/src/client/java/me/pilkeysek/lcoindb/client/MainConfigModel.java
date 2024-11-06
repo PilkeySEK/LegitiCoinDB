@@ -11,7 +11,7 @@ import java.util.List;
 public class MainConfigModel {
     public boolean authenticationEnabled = true;
     public List<String> trustedAuthServers = List.of("localhost","localhost:25565","lcauth.skye.host","lcauth.minceraft.host");
-    public String apiUrl = "http://lcapi.minceraft.host";
+    public String apiUrl = "https://lcapi.minceraft.host";
     @ExcludeFromScreen
     public String secret = "";
 }
