@@ -31,7 +31,6 @@ module.exports = {
 			.setTitle(username)
 			.setDescription('Balance: `' + `${balance}` + '`')
 			.setThumbnail('https://mc-heads.net/avatar/' + `${uuid}`)
-		// TODO: Make pretty with embeds
 		await interaction.reply({ embeds: [profileEmbed] });
 	},
 }
