@@ -2,5 +2,8 @@
   "text.config.lcoindb-config.option.authenticationEnabled": "Authentication Enabled",
   "text.config.lcoindb-config.option.trustedAuthServers": "Trusted Authentication Servers",
   "text.config.lcoindb-config.option.authenticationEnabled.tooltip": "Whether to automatically authenticate on any server.\n(If this is disabled no automatic authentication will happen.)",
-  "text.config.lcoindb-config.option.trustedAuthServers.tooltip": "Authentication will only be automatically done on these servers.\nThis is just for convenience."
+  "text.config.lcoindb-config.option.trustedAuthServers.tooltip": "Authentication will only be automatically done on these servers.\nThis is just for convenience.",
+  "text.config.lcoindb-config.option.apiUrl": "Api Url",
+  "text.config.lcoindb-config.option.apiUrl.tooltip": "The url of the api.\nDon't change if you don't know what you are doing!",
+  "text.config.lcoindb-config.title": "LegitiCoinDB Config"
 }
