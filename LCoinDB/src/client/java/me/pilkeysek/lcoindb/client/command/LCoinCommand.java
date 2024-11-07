@@ -10,6 +10,7 @@ import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import me.pilkeysek.lcoindb.client.LcoindbClient;
 import me.pilkeysek.lcoindb.client.MojangApiUtil;
+import me.pilkeysek.lcoindb.client.command.argumenttype.PlayerArgumentType;
 import me.pilkeysek.lcoindb.client.requestbodies.TransactionBody;
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandManager;
 import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
@@ -59,7 +60,7 @@ public class LCoinCommand {
                         )
                 )
                 .then(ClientCommandManager.literal("pay")
-                        .then(ClientCommandManager.argument("receiver", StringArgumentType.word())
+                        .then(ClientCommandManager.argument("receiver", PlayerArgumentType.player())
                                 .then(ClientCommandManager.argument("amount", IntegerArgumentType.integer(1))
                                         .executes(context -> {
                                             UUID senderUUID = context.getSource().getPlayer().getUuid();

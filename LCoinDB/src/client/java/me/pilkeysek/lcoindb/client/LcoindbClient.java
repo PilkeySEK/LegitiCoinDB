@@ -1,11 +1,15 @@
 package me.pilkeysek.lcoindb.client;
 
 import me.pilkeysek.lcoindb.client.command.LCoinCommand;
+import me.pilkeysek.lcoindb.client.command.argumenttype.PlayerArgumentType;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents;
+import net.fabricmc.fabric.api.command.v2.ArgumentTypeRegistry;
+import net.minecraft.command.argument.serialize.ConstantArgumentSerializer;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
+import net.minecraft.util.Identifier;
 
 import java.util.List;
 import java.util.Objects;
@@ -32,6 +36,11 @@ public class LcoindbClient implements ClientModInitializer {
                 }
             }
         });
+
+        ArgumentTypeRegistry.registerArgumentType(
+                Identifier.of("lcoindb", "player"),
+                PlayerArgumentType.class, ConstantArgumentSerializer.of(PlayerArgumentType::player));
+
         ClientCommandRegistrationCallback.EVENT.register(((commandDispatcher, commandRegistryAccess) -> {
             LCoinCommand.register(commandDispatcher);
         }));
