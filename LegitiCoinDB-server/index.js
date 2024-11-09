@@ -34,6 +34,12 @@ app.get("/player/:uuid", async (req, res) => {
   }
 });
 
+app.get("/list-top/10", async (req, res) => {
+  // get top 10 players by amount of legiticoins
+  const top10 = await players.find().sort({lcoins:-1}).toArray();
+  res.json({result: top10});
+});
+
 // Put this AFTER all listeners that dont require credentials (mostly GET)
 app.use((req, res, next) => {
   console.log(req.rawHeaders);
