@@ -12,7 +12,7 @@ const players = mongoclient.db(DB).collection("players");
 
 module.exports = {
   data: new SlashCommandBuilder()
-    .setName("top10")
+    .setName("top")
     .setDescription("Get stats about a specific player"),
   async execute(interaction) {
     try {
@@ -23,11 +23,11 @@ module.exports = {
         var lcoins = top10.at(i).lcoins;
         str += i + ". " + username + ": " + lcoins + "\n";
       }
-      const profileEmbed = new EmbedBuilder()
+      const topEmbed = new EmbedBuilder()
         .setColor(0xefbf04)
         .setTitle("Top 10")
         .setDescription(`${str}`);
-      await interaction.reply({ embeds: [profileEmbed] });
+      await interaction.reply({ embeds: [topEmbed] });
     } catch (error) {
       await interaction.reply(`${error}`);
     }
