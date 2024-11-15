@@ -31,7 +31,7 @@ public class LcoindbClient implements ClientModInitializer {
                 System.out.println("SERVER IP: " + serverIP);
                 List<String> trustedAuthServers = config.trustedAuthServers();
                 if(trustedAuthServers.contains(serverIP)) {
-                    minecraftClient.player.sendMessage(Text.literal("Attempting to authenticate ...\nYou may have to rejoin a second time if it doesn't succeed immediately (it might give an error)\nWhen you have been successfully authenticated, you can run /lcoin disableauth").formatted(Formatting.AQUA));
+                    minecraftClient.player.sendMessage(Text.literal("Attempting to authenticate...\nYou may have to rejoin a second time if it doesn't succeed immediately (it might give an error)\nWhen you have been successfully authenticated, you can run /lcoin disableauth").formatted(Formatting.AQUA), false);
                     minecraftClient.player.networkHandler.sendChatCommand("authme " + config.secret());
                 }
             }
@@ -41,8 +41,6 @@ public class LcoindbClient implements ClientModInitializer {
                 Identifier.of("lcoindb", "player"),
                 PlayerArgumentType.class, ConstantArgumentSerializer.of(PlayerArgumentType::player));
 
-        ClientCommandRegistrationCallback.EVENT.register(((commandDispatcher, commandRegistryAccess) -> {
-            LCoinCommand.register(commandDispatcher);
-        }));
+        ClientCommandRegistrationCallback.EVENT.register(((commandDispatcher, commandRegistryAccess) -> LCoinCommand.register(commandDispatcher)));
     }
 }
