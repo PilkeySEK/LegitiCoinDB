@@ -13,7 +13,7 @@ const players = mongoclient.db(DB).collection("players");
 module.exports = {
   data: new SlashCommandBuilder()
     .setName("top")
-    .setDescription("Get stats about a specific player"),
+    .setDescription("Get the top players with the most legiticoins"),
   async execute(interaction) {
     try {
       const top10 = await players.find().sort({ lcoins: -1 }).toArray();
@@ -25,7 +25,7 @@ module.exports = {
       }
       const topEmbed = new EmbedBuilder()
         .setColor(0xefbf04)
-        .setTitle("Top 10")
+        .setTitle("Top Players")
         .setDescription(`${str}`);
       await interaction.reply({ embeds: [topEmbed] });
     } catch (error) {
